@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.Design;
-using System.Diagnostics.Tracing;
-
-namespace DicOperations
+﻿namespace DicOperations
 {
     public class Program
     {
@@ -16,6 +13,8 @@ namespace DicOperations
                 if (string.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("Your text is null or empty. Please enter a valid text.");
+                    // Só acrescentando um tempo para que o usuário consiga ler a mensagem antes de limpar a tela
+                    Thread.Sleep(2000);
                     continue;
                 }
 
@@ -39,7 +38,8 @@ namespace DicOperations
 
             char[] delimiters = { ' ', ',', '.' };
 
-            string[] words = text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            // Assume todo o texto como em minúsculas para incluir na contagem todas as ocorrência independentemente da capitulação
+            string[] words = text.ToLowerInvariant().Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string word in words)
             {

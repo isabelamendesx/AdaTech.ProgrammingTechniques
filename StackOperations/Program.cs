@@ -41,6 +41,7 @@ public class Program
 
     static string CleanExpression(string expression)
     {
+        // ++ Boa! Usou uma estrutura de dados sobre a qual não falamos, mas esse um caso de uso perfeito!
         var validChars = new HashSet<char> { '(', '{', '[', ')', '}', ']' };
         var cleanedExpression = new StringBuilder();
 
@@ -65,7 +66,7 @@ public class Program
             {
                 stack.Push(c);
             }
-            else if(stack.Count == 0 || !TryMatchPair(stack.Pop(), c))
+            else if(stack.Count == 0 || !PairMatches(stack.Pop(), c))
             {
                 return false;
             }
@@ -74,7 +75,10 @@ public class Program
         return stack.Count == 0;
     }
 
-    static bool TryMatchPair(char open, char close)
+    // Por convenção, em dotnet usamos o prefixo `Try...` quando é um método 'inseguro', cujos possíveis erros estão sendo suprimidos
+    // (como é o caso do `int.TryParse("12", out int value)`) e o resultado da operação será devolvido condicionalmente ao sucesso na execução.
+    // O método abaixo não abre a possibilidade de erro e dá uma resposta canônica, e não uma resposta sobre a 'tentativa'.
+    static bool PairMatches(char open, char close)
     {
         return (open == '(' && close == ')') ||
            (open == '{' && close == '}') ||

@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace ListOperations;
+﻿namespace ListOperations;
 
 public class Program
 {
@@ -35,7 +33,6 @@ public class Program
             {
                 yield return word;
             }
-
         }
     }
 }

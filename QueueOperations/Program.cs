@@ -28,7 +28,7 @@ public class Program
 
             Console.WriteLine("Do you want to play again? Press Y or any other key to exit");
 
-        } while (Console.ReadLine().ToUpper() == "Y");
+        } while (Console.ReadLine()?.ToUpper() == "Y");
     }
 
     static void HotPotatoGame(int numberPlayers)
